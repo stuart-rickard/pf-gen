@@ -1,0 +1,46 @@
+{
+    "sourceFile": "app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1640359629165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1640359866459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n-console.log(profileDataArgs);\n \n-const printProfileData = (profileDataArr) => {\n-    console.log(profileDataArr);\n+const printProfileData = profileDataArr => {\n+    for (let i = 0; i < profileDataArr.length; i++) {\n+      console.log(profileDataArr[i]);\n\\ No newline at end of file\n+    }\n   };\n-  \n-  printProfileData(profileDataArgs);\n+\n+printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640360261799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n const printProfileData = profileDataArr => {\n-    for (let i = 0; i < profileDataArr.length; i++) {\n-      console.log(profileDataArr[i]);\n-    }\n+    profileDataArr.forEach(console.log)\n   };\n \n printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640360695145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,11 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n const printProfileData = profileDataArr => {\n-    profileDataArr.forEach(console.log)\n+    profileDataArr.forEach(console.log);\n+    profileDataArr.forEach((profileItem) => {\n+        console.log(profileItem)\n   };\n \n+\n+\n printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640360831138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n const printProfileData = profileDataArr => {\n     profileDataArr.forEach(console.log);\n     profileDataArr.forEach((profileItem) => {\n         console.log(profileItem)\n-  };\n+  });\n \n \n \n printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640360909705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n     profileDataArr.forEach(console.log);\n     profileDataArr.forEach((profileItem) => {\n         console.log(profileItem)\n   });\n+};\n \n \n \n printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640360975004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n const printProfileData = profileDataArr => {\n-    profileDataArr.forEach(console.log);\n+    profileDataArr.forEach(console.log());\n     profileDataArr.forEach((profileItem) => {\n         console.log(profileItem)\n   });\n };\n"
+                },
+                {
+                    "date": 1640361013001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n const printProfileData = profileDataArr => {\n-    profileDataArr.forEach(console.log());\n+    profileDataArr.forEach(console.log);\n     profileDataArr.forEach((profileItem) => {\n         console.log(profileItem)\n   });\n };\n"
+                }
+            ],
+            "date": 1640359629165,
+            "name": "Commit-0",
+            "content": "var profileDataArgs = process.argv.slice(2, process.argv.length);\nconsole.log(profileDataArgs);\n\nconst printProfileData = (profileDataArr) => {\n    console.log(profileDataArr);\n  };\n  \n  printProfileData(profileDataArgs);"
+        }
+    ]
+}
