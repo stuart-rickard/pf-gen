@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1640362326551,
@@ -16,6 +16,18 @@
                 {
                     "date": 1640362649740,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n const printProfileData = profileDataArr => {\n     profileDataArr.forEach(console.log);\n+    profileDataArr.forEach(profileItem => console.log(profileItem));\n     profileDataArr.forEach((profileItem) => {\n         console.log(profileItem)\n   });\n };\n"
+                },
+                {
+                    "date": 1640620205434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,2 @@\n-var profileDataArgs = process.argv.slice(2, process.argv.length);\n+const profileDataArgs = process.argv.slice(2, process.argv.length);\n \n-const printProfileData = profileDataArr => {\n-    profileDataArr.forEach(console.log);\n-    profileDataArr.forEach(profileItem => console.log(profileItem));\n-    profileDataArr.forEach((profileItem) => {\n-        console.log(profileItem)\n-  });\n-};\n-\n\\ No newline at end of file\n-printProfileData(profileDataArgs);\n"
+                },
+                {
+                    "date": 1640620435415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,5 @@\n const profileDataArgs = process.argv.slice(2, process.argv.length);\n \n+const generatePage = () => 'Name: Jane, Github: janehub';\n+\n+console.log(generatePage());\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640620532826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,11 @@\n-const profileDataArgs = process.argv.slice(2, process.argv.length);\n+var profileDataArgs = process.argv.slice(2, process.argv.length);\n \n-const generatePage = () => 'Name: Jane, Github: janehub';\n+const printProfileData = profileDataArr => {\n\\ No newline at end of file\n+    profileDataArr.forEach(console.log);\n+    profileDataArr.forEach(profileItem => console.log(profileItem));\n+    profileDataArr.forEach((profileItem) => {\n+        console.log(profileItem)\n+  });\n+};\n \n-console.log(generatePage());\n+printProfileData(profileDataArgs);\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1640362326551,
