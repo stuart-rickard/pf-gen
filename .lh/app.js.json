@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 30,
+            "activePatchIndex": 34,
             "patches": [
                 {
                     "date": 1640359629165,
@@ -128,6 +128,22 @@
                 {
                     "date": 1640654009492,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,24 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n+const promptUser = () => {\n+  return inquirer.prompt([\n+    {\n+      type: 'input',\n+      name: 'name',\n+      message: 'What is your name'\n+    },\n+    {\n+      type: 'input',\n+      name: 'github',\n+      message: 'Provide your github'\n+    }\n+  ]);\n+};\n+\n+\n const promptProject = portfolioData => {\n   console.log(`\n =================\n Add a New Project\n@@ -64,6 +80,7 @@\n       return portfolioData;\n     };\n   });\n };\n-\n-promptProject().then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n+promptUser()\n+  .then(promptProject)\n+  .then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640705347325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,16 @@\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name'\n+      validate: nameInput => {\n+        if (nameInput) {\n+          return true;\n+        } else {\n+          console.log('Please enter your name!');\n+          return false;\n+        }\n+      }\n     },\n     {\n       type: 'input',\n       name: 'github',\n"
+                },
+                {
+                    "date": 1640705439245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n-      message: 'What is your name'\n+      message: 'What is your name',\n       validate: nameInput => {\n         if (nameInput) {\n           return true;\n         } else {\n"
+                },
+                {
+                    "date": 1640705788997,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n-      message: 'What is your name',\n+      message: 'What is your name (required)',\n       validate: nameInput => {\n         if (nameInput) {\n           return true;\n         } else {\n@@ -26,9 +26,17 @@\n     },\n     {\n       type: 'input',\n       name: 'github',\n-      message: 'Provide your github'\n+      message: 'Provide your github (required)',\n+      validate: githubInput => {\n+        if (githubInput) {\n+          return true;\n+        } else {\n+          console.log('Please enter your Github!');\n+          return false;\n+        }\n+      }\n     }\n   ]);\n };\n \n@@ -48,14 +56,30 @@\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n-      message: 'What is the name of your project?'\n+      message: 'What is the name of your project (required)?',\n+      validate: pnameInput => {\n+        if (pnameInput) {\n+          return true;\n+        } else {\n+          console.log('Please enter your project name!');\n+          return false;\n+        }\n+      }\n     },\n     {\n       type: 'input',\n       name: 'description',\n-      message: 'Provide a description of the project (Required)'\n+      message: 'Provide a description of the project (Required)',\n+      validate: projDesc => {\n+        if (projDesc) {\n+          return true;\n+        } else {\n+          console.log('Please enter your project description!');\n+          return false;\n+        }\n+      }\n     },\n     {\n       type: 'checkbox',\n       name: 'languages',\n@@ -64,9 +88,17 @@\n     },\n     {\n       type: 'input',\n       name: 'link',\n-      message: 'Enter the GitHub link to your project. (Required)'\n+      message: 'Enter the GitHub link to your project. (Required)',\n+      validate: gitLink => {\n+        if (gitLink) {\n+          return true;\n+        } else {\n+          console.log('Please enter your Github link!');\n+          return false;\n+        }\n+      }\n     },\n     {\n       type: 'confirm',\n       name: 'feature',\n"
+                },
+                {
+                    "date": 1640706305738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,26 @@\n           console.log('Please enter your Github!');\n           return false;\n         }\n       }\n+    },\n+    {\n+      type: 'confirm',\n+      name: 'confirmAbout',\n+      message: 'Would you like to enter some information about yourself for an \"About\" section?',\n+      default: true\n+    },\n+    {\n+      type: 'input',\n+      name: 'about',\n+      message: 'Provide some information about yourself:',\n+      when: ({ confirmAbout }) => {\n+        if (confirmAbout) {\n+          return true;\n+        } else {\n+          return false;\n+        }\n+      }\n     }\n   ]);\n };\n \n@@ -51,9 +69,8 @@\n // If there's no 'projects' array property, create one\n   if (!portfolioData.projects) {\n     portfolioData.projects = [];\n   };\n-  console.log(portfolioData);\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n"
                 }
             ],
             "date": 1640359629165,
