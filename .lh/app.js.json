@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1640359629165,
@@ -80,6 +80,14 @@
                 {
                     "date": 1640645202303,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n const fs = require('fs');\n+const generatePage = require('./src/page-template.js');\n \n const profileDataArgs = process.argv.slice(2);\n \n const [name, github] = profileDataArgs;\n"
+                },
+                {
+                    "date": 1640649991711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,13 @@\n-const fs = require('fs');\n-const generatePage = require('./src/page-template.js');\n+const inquirer = require('inquirer');\n+// const fs = require('fs');\n+// const generatePage = require('./src/page-template');\n \n-const profileDataArgs = process.argv.slice(2);\n+// const pageHTML = generatePage(name, github);\n \n-const [name, github] = profileDataArgs;\n+// fs.writeFile('./index.html', pageHTML, err => {\n+//   if (err) throw err;\n \n-fs.writeFile('./index.html', generatePage(name, github), err => {\n-  if (err) throw new Error(err);\n+//   console.log('Portfolio complete! Check out index.html to see the output!');\n+// });\n \n-  console.log('Portfolio complete! Check out index.html to see the output!');\n-});\n+console.log(inquirer);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640650323534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,13 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-\n-console.log(inquirer);\n\\ No newline at end of file\n+inquirer\n+  .prompt([\n+    {\n+      type: 'input',\n+      name: 'name',\n+      message: 'What is your name?'\n+    }\n+  ])\n+  .then(answers => console.log(answers));\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1640359629165,
