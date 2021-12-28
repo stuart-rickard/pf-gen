@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 20,
+            "activePatchIndex": 30,
             "patches": [
                 {
                     "date": 1640359629165,
@@ -88,6 +88,46 @@
                 {
                     "date": 1640650323534,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,13 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-\n-console.log(inquirer);\n\\ No newline at end of file\n+inquirer\n+  .prompt([\n+    {\n+      type: 'input',\n+      name: 'name',\n+      message: 'What is your name?'\n+    }\n+  ])\n+  .then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640650723940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,13 +8,17 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-inquirer\n+const promptUser = () => {\n+  inquirer\n   .prompt([\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name?'\n     }\n\\ No newline at end of file\n   ])\n-  .then(answers => console.log(answers));\n+  .then(answers => console.log(answers));\n+};\n+\n+promptUser().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640650862969,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,17 +8,13 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-const promptUser = () => {\n-  inquirer\n+inquirer\n   .prompt([\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name?'\n     }\n   ])\n-  .then(answers => console.log(answers));\n-};\n-\n\\ No newline at end of file\n-promptUser().then(answers => console.log(answers));\n+  .then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640650898485,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,13 +8,17 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-inquirer\n+const promptUser = () => {\n+  inquirer\n   .prompt([\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name?'\n     }\n\\ No newline at end of file\n   ])\n-  .then(answers => console.log(answers));\n+  .then(answers => console.log(answers));\n+};\n+\n+promptUser().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640650998771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,16 +9,14 @@\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n const promptUser = () => {\n-  inquirer\n-  .prompt([\n+  inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name?'\n     }\n   ])\n-  .then(answers => console.log(answers));\n };\n \n promptUser().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640651310187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,24 @@\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n const promptUser = () => {\n-  inquirer.prompt([\n+  return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n       message: 'What is your name?'\n+    },\n+    {\n+      type: 'input',\n+      name: 'github',\n+      message: 'Enter your GitHub Username'\n+    },\n+    {\n+      type: 'input',\n+      name: 'about',\n+      message: 'Provide some information about yourself:'\n     }\n-  ])\n+  ]);\n };\n \n promptUser().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640651446729,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,25 +8,47 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-const promptUser = () => {\n+const promptProject = () => {\n+  console.log(`\n+=================\n+Add a New Project\n+=================\n+`);\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n-      message: 'What is your name?'\n+      message: 'What is the name of your project?'\n     },\n     {\n       type: 'input',\n-      name: 'github',\n-      message: 'Enter your GitHub Username'\n+      name: 'description',\n+      message: 'Provide a description of the project (Required)'\n     },\n\\ No newline at end of file\n     {\n+      type: 'checkbox',\n+      name: 'languages',\n+      message: 'What did you build this project with? (Check all that apply)',\n+      choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']\n+    },\n+    {\n       type: 'input',\n-      name: 'about',\n-      message: 'Provide some information about yourself:'\n+      name: 'link',\n+      message: 'Enter the GitHub link to your project. (Required)'\n+    },\n+    {\n+      type: 'confirm',\n+      name: 'feature',\n+      message: 'Would you like to feature this project?',\n+      default: false\n+    },\n+    {\n+      type: 'confirm',\n+      name: 'confirmAddProject',\n+      message: 'Would you like to enter another project?',\n+      default: false\n     }\n   ]);\n };\n-\n-promptUser().then(answers => console.log(answers));\n+promptProject().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640653101467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,20 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n-const promptProject = () => {\n+const promptProject = portfolioData => {\n   console.log(`\n =================\n Add a New Project\n =================\n `);\n+\n+// If there's no 'projects' array property, create one\n+if (!portfolioData.projects) {\n+  portfolioData.projects = [];\n+}\n+\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n@@ -48,7 +54,16 @@\n       name: 'confirmAddProject',\n       message: 'Would you like to enter another project?',\n       default: false\n     }\n-  ]);\n+  ])\n+  .then(projectData => {\n+    portfolioData.projects.push(projectData);\n+    if (projectData.confirmAddProject) {\n+      return promptProject(portfolioData);\n+    } else {\n+      return portfolioData;\n+    };\n+  });\n };\n+\n promptProject().then(answers => console.log(answers));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640653190874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,5 +65,5 @@\n     };\n   });\n };\n \n-promptProject().then(answers => console.log(answers));\n\\ No newline at end of file\n+promptProject().then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640653400508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,12 +16,12 @@\n =================\n `);\n \n // If there's no 'projects' array property, create one\n-if (!portfolioData.projects) {\n-  portfolioData.projects = [];\n-}\n-\n+  if (!portfolioData.projects) {\n+    portfolioData.projects = [];\n+  };\n+  console.log(portfolioData);\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n"
+                },
+                {
+                    "date": 1640654009492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,24 @@\n //   if (err) throw err;\n \n //   console.log('Portfolio complete! Check out index.html to see the output!');\n // });\n+const promptUser = () => {\n+  return inquirer.prompt([\n+    {\n+      type: 'input',\n+      name: 'name',\n+      message: 'What is your name'\n+    },\n+    {\n+      type: 'input',\n+      name: 'github',\n+      message: 'Provide your github'\n+    }\n+  ]);\n+};\n+\n+\n const promptProject = portfolioData => {\n   console.log(`\n =================\n Add a New Project\n@@ -64,6 +80,7 @@\n       return portfolioData;\n     };\n   });\n };\n-\n-promptProject().then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n+promptUser()\n+  .then(promptProject)\n+  .then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1640359629165,
