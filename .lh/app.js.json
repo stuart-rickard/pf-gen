@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 34,
+            "activePatchIndex": 37,
             "patches": [
                 {
                     "date": 1640359629165,
@@ -144,6 +144,18 @@
                 {
                     "date": 1640706305738,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,26 @@\n           console.log('Please enter your Github!');\n           return false;\n         }\n       }\n+    },\n+    {\n+      type: 'confirm',\n+      name: 'confirmAbout',\n+      message: 'Would you like to enter some information about yourself for an \"About\" section?',\n+      default: true\n+    },\n+    {\n+      type: 'input',\n+      name: 'about',\n+      message: 'Provide some information about yourself:',\n+      when: ({ confirmAbout }) => {\n+        if (confirmAbout) {\n+          return true;\n+        } else {\n+          return false;\n+        }\n+      }\n     }\n   ]);\n };\n \n@@ -51,9 +69,8 @@\n // If there's no 'projects' array property, create one\n   if (!portfolioData.projects) {\n     portfolioData.projects = [];\n   };\n-  console.log(portfolioData);\n   return inquirer.prompt([\n     {\n       type: 'input',\n       name: 'name',\n"
+                },
+                {
+                    "date": 1640731024629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,9 @@\n const inquirer = require('inquirer');\n-// const fs = require('fs');\n-// const generatePage = require('./src/page-template');\n+const fs = require('fs');\n+const generatePage = require('./src/page-template');\n \n-// const pageHTML = generatePage(name, github);\n \n-// fs.writeFile('./index.html', pageHTML, err => {\n-//   if (err) throw err;\n-\n-//   console.log('Portfolio complete! Check out index.html to see the output!');\n-// });\n const promptUser = () => {\n   return inquirer.prompt([\n     {\n       type: 'input',\n@@ -139,5 +133,10 @@\n   });\n };\n promptUser()\n   .then(promptProject)\n-  .then(portfolioData => console.log(portfolioData));\n\\ No newline at end of file\n+  .then(portfolioData => {\n+    const pageHTML = generatePage(portfolioData);\n+  //   fs.writeFile('./index.html', pageHTML, err => {\n+  //     if (err) throw err;\n+  // });\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640733304835,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -135,8 +135,8 @@\n promptUser()\n   .then(promptProject)\n   .then(portfolioData => {\n     const pageHTML = generatePage(portfolioData);\n-  //   fs.writeFile('./index.html', pageHTML, err => {\n-  //     if (err) throw err;\n-  // });\n+    fs.wrsiteFile('./index.html', pageHTML, err => {\n+      if (err) throw err;\n+  });\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1640733387923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -135,8 +135,8 @@\n promptUser()\n   .then(promptProject)\n   .then(portfolioData => {\n     const pageHTML = generatePage(portfolioData);\n-    fs.wrsiteFile('./index.html', pageHTML, err => {\n+    fs.writeFile('./index.html', pageHTML, err => {\n       if (err) throw err;\n   });\n });\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1640359629165,
